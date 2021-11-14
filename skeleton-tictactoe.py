@@ -8,11 +8,14 @@ class Game:
   ALPHABETA = 1
   HUMAN = 2
   AI = 3
+  BLACK = '•'
+  WHITE = '◦'
 
-  def __init__(self, recommend=True, n=3, blocks=[]):
+  def __init__(self, recommend=True, n=3, blocks=[], s=3):
     self.n = n
     self.initialize_game()
     self.add_blocks(blocks)
+    self.s = s
     self.recommend = recommend
 
   def initialize_game(self):
@@ -20,18 +23,18 @@ class Game:
     self.current_state = [['□' for x in range(0, self.n)]
                           for x in range(0, self.n)]
     # Player X always plays first
-    self.player_turn = '◦'
+    self.player_turn = self.WHITE
 
   def draw_board(self):
     print()
-    for y in range(0, self.n):
-      for x in range(0, self.n):
+    for x in range(0, self.n):
+      for y in range(0, self.n):
         print(F'{self.current_state[x][y]}', end="")
       print()
     print()
 
   def is_valid(self, px, py):
-    if px < 0 or px > 2 or py < 0 or py > 2:
+    if px < 0 or px > self.n - 1 or py < 0 or py > self.n - 1:
       return False
     elif self.current_state[px][py] != '□':
       return False
@@ -40,22 +43,47 @@ class Game:
 
   def is_end(self):
     # Vertical win
-    for i in range(0, self.n):
-      if (self.current_state[0][i] != '□'
-          and self.current_state[0][i] == self.current_state[1][i]
-          and self.current_state[1][i] == self.current_state[2][i]):
-        return self.current_state[0][i]
+    for i in range(0, self.s):
+      column = ''
+      for j in range(0, self.n):
+        column += self.current_state[j][i]
+      if self.BLACK * self.s in column:
+        return self.BLACK
+      elif self.WHITE * self.s in column:
+        return self.WHITE
     # Horizontal win
     for i in range(0, self.n):
-      if (self.current_state[i] == ['◦', '◦', '◦']):
-        return '◦'
-      elif (self.current_state[i] == ['•', '•', '•']):
-        return '•'
-    # Main diagonal win
-    if (self.current_state[0][0] != '□'
-        and self.current_state[0][0] == self.current_state[1][1]
-        and self.current_state[0][0] == self.current_state[2][2]):
-      return self.current_state[0][0]
+      row = ''.join(self.current_state[i])
+      if self.BLACK * self.s in row:
+        return self.BLACK
+      elif self.WHITE * self.s in row:
+        return self.WHITE
+    # num of valid diagonals:
+    total = self.n * 2 - 1
+    for x in range(0, self.n):
+      print(x)
+      anti_diagonal = ''
+      anti_diagonal2 = ''
+      diagonal = ''
+      diagonal2 = ''
+      # Anti diagonal win
+      for i, j in zip(range(x, -1, -1), range(0, x + 1)):
+        k = self.n - i - 1
+        l = j
+        diagonal += self.current_state[k][l]
+        diagonal2 += self.current_state[self.n - k - 1][self.n - l - 1]
+        anti_diagonal += self.current_state[i][j]
+        anti_diagonal2 += self.current_state[self.n - i - 1][self.n - i - 1]
+
+      bpattern = self.BLACK * self.s
+      wpattern = self.WHITE * self.s
+      if (bpattern in anti_diagonal or bpattern in anti_diagonal2
+          or bpattern in diagonal or bpattern in diagonal2):
+        return self.BLACK
+      elif (wpattern in anti_diagonal or wpattern in anti_diagonal2
+            or wpattern in diagonal or wpattern in diagonal2):
+        return self.WHITE
+
     # Second diagonal win
     if (self.current_state[0][2] != '□'
         and self.current_state[0][2] == self.current_state[1][1]
@@ -74,9 +102,9 @@ class Game:
     self.result = self.is_end()
     # Printing the appropriate message if the game has ended
     if self.result != None:
-      if self.result == '◦':
+      if self.result == self.WHITE:
         print('The winner is ◦!')
-      elif self.result == '•':
+      elif self.result == self.BLACK:
         print('The winner is •!')
       elif self.result == '□':
         print("It's a tie!")
@@ -86,26 +114,26 @@ class Game:
   def input_move(self):
     while True:
       print(F'Player {self.player_turn}, enter your move:')
-      px = int(input('enter the x coordinate: '))
-      py = int(input('enter the y coordinate: '))
+      px = int(input('enter the row number: '))
+      py = int(input('enter the column number: '))
       if self.is_valid(px, py):
         return (px, py)
       else:
         print('The move is not valid! Try again.')
 
   def switch_player(self):
-    if self.player_turn == '◦':
-      self.player_turn = '•'
-    elif self.player_turn == '•':
-      self.player_turn = '◦'
+    if self.player_turn == self.WHITE:
+      self.player_turn = self.BLACK
+    elif self.player_turn == self.BLACK:
+      self.player_turn = self.WHITE
     return self.player_turn
 
   def minimax(self, max=False):
-    # Minimizing for '◦' and maximizing for '•'
+    # Minimizing for self.WHITE and maximizing for self.BLACK
     # Possible values are:
-    # -1 - win for '◦'
+    # -1 - win for self.WHITE
     # 0  - a tie
-    # 1  - loss for '◦'
+    # 1  - loss for self.WHITE
     # We're initially setting it to 2 or -2 as worse than the worst case:
     value = 2
     if max:
@@ -113,9 +141,9 @@ class Game:
     x = None
     y = None
     result = self.is_end()
-    if result == '◦':
+    if result == self.WHITE:
       return (-1, x, y)
-    elif result == '•':
+    elif result == self.BLACK:
       return (1, x, y)
     elif result == '□':
       return (0, x, y)
@@ -123,14 +151,14 @@ class Game:
       for j in range(0, self.n):
         if self.current_state[i][j] == '□':
           if max:
-            self.current_state[i][j] = '•'
+            self.current_state[i][j] = self.BLACK
             (v, _, _) = self.minimax(max=False)
             if v > value:
               value = v
               x = i
               y = j
           else:
-            self.current_state[i][j] = '◦'
+            self.current_state[i][j] = self.WHITE
             (v, _, _) = self.minimax(max=True)
             if v < value:
               value = v
@@ -140,11 +168,11 @@ class Game:
     return (value, x, y)
 
   def alphabeta(self, alpha=-2, beta=2, max=False):
-    # Minimizing for '◦' and maximizing for '•'
+    # Minimizing for self.WHITE and maximizing for self.BLACK
     # Possible values are:
-    # -1 - win for '◦'
+    # -1 - win for self.WHITE
     # 0  - a tie
-    # 1  - loss for '◦'
+    # 1  - loss for self.WHITE
     # We're initially setting it to 2 or -2 as worse than the worst case:
     value = 2
     if max:
@@ -152,9 +180,9 @@ class Game:
     x = None
     y = None
     result = self.is_end()
-    if result == '◦':
+    if result == self.WHITE:
       return (-1, x, y)
-    elif result == '•':
+    elif result == self.BLACK:
       return (1, x, y)
     elif result == '□':
       return (0, x, y)
@@ -162,14 +190,14 @@ class Game:
       for j in range(0, self.n):
         if self.current_state[i][j] == '□':
           if max:
-            self.current_state[i][j] = '•'
+            self.current_state[i][j] = self.BLACK
             (v, _, _) = self.alphabeta(alpha, beta, max=False)
             if v > value:
               value = v
               x = i
               y = j
           else:
-            self.current_state[i][j] = '◦'
+            self.current_state[i][j] = self.WHITE
             (v, _, _) = self.alphabeta(alpha, beta, max=True)
             if v < value:
               value = v
@@ -189,8 +217,7 @@ class Game:
     return (value, x, y)
 
   def play(self, algo=None, player_x=None, player_o=None):
-    if algo == None:
-      algo = self.ALPHABETA
+
     if player_x == None:
       player_x = self.HUMAN
     if player_o == None:
@@ -201,25 +228,25 @@ class Game:
         return
       start = time.time()
       if algo == self.MINIMAX:
-        if self.player_turn == '◦':
+        if self.player_turn == self.WHITE:
           (_, x, y) = self.minimax(max=False)
         else:
           (_, x, y) = self.minimax(max=True)
-      else:  # algo == self.ALPHABETA
-        if self.player_turn == '◦':
+      elif algo == self.ALPHABETA:  # algo == self.ALPHABETA
+        if self.player_turn == self.WHITE:
           (m, x, y) = self.alphabeta(max=False)
         else:
           (m, x, y) = self.alphabeta(max=True)
       end = time.time()
-      if (self.player_turn == '◦'
-          and player_x == self.HUMAN) or (self.player_turn == '•'
+      if (self.player_turn == self.WHITE
+          and player_x == self.HUMAN) or (self.player_turn == self.BLACK
                                           and player_o == self.HUMAN):
         if self.recommend:
           print(F'Evaluation time: {round(end - start, 7)}s')
           print(F'Recommended move: x = {x}, y = {y}')
         (x, y) = self.input_move()
-      if (self.player_turn == '◦'
-          and player_x == self.AI) or (self.player_turn == '•'
+      if (self.player_turn == self.WHITE
+          and player_x == self.AI) or (self.player_turn == self.BLACK
                                        and player_o == self.AI):
         print(F'Evaluation time: {round(end - start, 7)}s')
         print(
@@ -229,20 +256,14 @@ class Game:
       self.switch_player()
 
   def add_blocks(self, b):
-    print(self.current_state)
     for block in b:
-      print(self.current_state[block[0]][block[1]])
       self.current_state[block[0]][block[1]] = '⛝'
-      print(self.current_state)
 
 
 def main():
-  g = Game(
-      recommend=True,
-      n=3,
-  )
-  g.play(algo=Game.ALPHABETA, player_x=Game.AI, player_o=Game.AI)
-  g.play(algo=Game.MINIMAX, player_x=Game.AI, player_o=Game.HUMAN)
+  g = Game(recommend=False, n=4, s=2)
+  # g.play(algo=Game.ALPHABETA, player_x=Game.AI, player_o=Game.AI)
+  g.play(algo=None, player_x=Game.HUMAN, player_o=Game.HUMAN)
 
 
 if __name__ == "__main__":
