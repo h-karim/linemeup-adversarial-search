@@ -1,0 +1,120 @@
+n=4 b=4 s=3 t=5
+
+Player 1: d=6 a=False
+Player 2: d=6 a=False
+
+10 games
+Total wins for heuristic e1: 10 (50.0%)
+Total wins for heuristic e2: 10 (50.0%)
+
+i	Average evaluation time: 0.00
+ii	Total heuristic evaluations: 67512465
+iii	Evaluations by depth: {1: 317, 2: 1834, 3: 12678, 4: 98061, 5: 685301, 6: 17182026}
+iv	 Average evaluation depth: 5.64
+vi	Average moves per game: 7.00
+
+n=4 b=2 s=3 t=1
+
+Player 1: d=6 a=True
+Player 2: d=6 a=True
+
+10 games
+Total wins for heuristic e1: 10 (100.0%)
+Total wins for heuristic e2: 0 (0.0%)
+
+i	Average evaluation time: 0.00
+ii	Total heuristic evaluations: 2389400
+iii	Evaluations by depth: {1: 239, 2: 1377, 3: 3760, 4: 18948, 5: 64089, 6: 515653}
+iv	 Average evaluation depth: 4.18
+vi	Average moves per game: 10.70
+
+n=5 b=0 s=4 t=1
+
+Player 1: d=6 a=True
+Player 2: d=6 a=True
+
+10 games
+Total wins for heuristic e1: 7 (53.8%)
+Total wins for heuristic e2: 6 (46.2%)
+
+i	Average evaluation time: 0.00
+ii	Total heuristic evaluations: 39966845
+iii	Evaluations by depth: {1: 2900, 2: 3638, 3: 7745, 4: 37674, 5: 149510, 6: 3741262}
+iv	 Average evaluation depth: 5.60
+vi	Average moves per game: 20.45
+
+n=5 b=0 s=4 t=5
+
+Player 1: d=6 a=True
+Player 2: d=6 a=True
+
+10 games
+Total wins for heuristic e1: 8 (44.4%)
+Total wins for heuristic e2: 10 (55.6%)
+
+i	Average evaluation time: 0.00
+ii	Total heuristic evaluations: 322669743
+iii	Evaluations by depth: {1: 2034, 2: 3923, 3: 13712, 4: 105718, 5: 654277, 6: 27034398}
+iv	 Average evaluation depth: 5.51
+vi	Average moves per game: 20.40
+
+n=8 b=0 s=5 t=1
+
+Player 1: d=2 a=True
+Player 2: d=6 a=True
+
+10 games
+Total wins for heuristic e1: 14 (70.0%)
+Total wins for heuristic e2: 6 (30.0%)
+
+i	Average evaluation time: 0.00
+ii	Total heuristic evaluations: 59460287
+iii	Evaluations by depth: {1: 15510, 2: 63078, 3: 14072, 4: 19131, 5: 50012, 6: 2084009}
+iv	 Average evaluation depth: 3.80
+vi	Average moves per game: 39.30
+
+n=8 b=0 s=5 t=5
+
+Player 1: d=2 a=True
+Player 2: d=6 a=True
+
+10 games
+Total wins for heuristic e1: 9 (90.0%)
+Total wins for heuristic e2: 1 (10.0%)
+
+i	Average evaluation time: 0.00
+ii	Total heuristic evaluations: 518161000
+iii	Evaluations by depth: {1: 14509, 2: 64197, 3: 16688, 4: 30620, 5: 208946, 6: 15840664}
+iv	 Average evaluation depth: 3.84
+vi	Average moves per game: 45.80
+
+n=8 b=0 s=5 t=1
+
+Player 1: d=6 a=True
+Player 2: d=6 a=True
+
+10 games
+Total wins for heuristic e1: 20 (100.0%)
+Total wins for heuristic e2: 0 (0.0%)
+
+i	Average evaluation time: 0.00
+ii	Total heuristic evaluations: 168590156
+iii	Evaluations by depth: {1: 11782, 2: 12861, 3: 17321, 4: 79331, 5: 226872, 6: 7397379}
+iv	 Average evaluation depth: 5.90
+vi	Average moves per game: 49.00
+
+n=8 b=8 s=5 t=1
+
+Player 1: d=6 a=True
+Player 2: d=6 a=True
+
+10 games
+Total wins for heuristic e1: 8 (42.1%)
+Total wins for heuristic e2: 11 (57.9%)
+
+i	Average evaluation time: 0.01
+ii	Total heuristic evaluations: 106776193
+iii	Evaluations by depth: {1: 10252, 2: 13531, 3: 12538, 4: 46808, 5: 120087, 6: 4700227}
+iv	 Average evaluation depth: 5.88
+vi	Average moves per game: 35.80
+

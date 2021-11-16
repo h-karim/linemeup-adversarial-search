@@ -1,0 +1,235 @@
+n=5 b=4 s=4 t=1
+blocs=[]
+
+Player 1: AI d=6 a=True, e1
+Player 2: AI d=6 a=True, e2
+
+.....
+.....
+.....
+.....
+.....
+
+Player X under AI control plays: row:4, column:4
+
+i		Evaluation time: 0.5066118s
+ii	Heuristic evaluations: 1288
+iii	Evaluations by depth: {1: 25, 2: 23, 3: 18, 4: 35, 5: 295, 6: 26161}
+iv	Average evaluation depth: 5.98
+.....
+.....
+.....
+.....
+....X
+
+Player O under AI control plays: row:2, column:2
+
+i		Evaluation time: 0.5027905s
+ii	Heuristic evaluations: 442900
+iii	Evaluations by depth: {1: 24, 2: 1, 3: 7, 4: 43, 5: 104, 6: 6037}
+iv	Average evaluation depth: 5.95
+.....
+.....
+..O..
+.....
+....X
+
+Player X under AI control plays: row:0, column:3
+
+i		Evaluation time: 0.5026534s
+ii	Heuristic evaluations: 86536
+iii	Evaluations by depth: {1: 21, 2: 7, 3: 6, 4: 88, 5: 399, 6: 24772}
+iv	Average evaluation depth: 5.97
+...X.
+.....
+..O..
+.....
+....X
+
+Player O under AI control plays: row:0, column:2
+
+i		Evaluation time: 0.5022132s
+ii	Heuristic evaluations: 796543
+iii	Evaluations by depth: {1: 3, 2: 3, 3: 5, 4: 49, 5: 190, 6: 7834}
+iv	Average evaluation depth: 5.96
+..OX.
+.....
+..O..
+.....
+....X
+
+Player X under AI control plays: row:1, column:2
+
+i		Evaluation time: 0.5020151s
+ii	Heuristic evaluations: 187128
+iii	Evaluations by depth: {1: 17, 2: 8, 3: 10, 4: 141, 5: 513, 6: 24561}
+iv	Average evaluation depth: 5.96
+..OX.
+..X..
+..O..
+.....
+....X
+
+Player O under AI control plays: row:2, column:1
+
+i		Evaluation time: 0.5028877s
+ii	Heuristic evaluations: 1089198
+iii	Evaluations by depth: {1: 9, 2: 2, 3: 5, 4: 53, 5: 216, 6: 9522}
+iv	Average evaluation depth: 5.96
+..OX.
+..X..
+.OO..
+.....
+....X
+
+Player X under AI control plays: row:2, column:0
+
+i		Evaluation time: 0.5009577s
+ii	Heuristic evaluations: 296388
+iii	Evaluations by depth: {1: 4, 2: 8, 3: 21, 4: 198, 5: 809, 6: 31808}
+iv	Average evaluation depth: 5.96
+..OX.
+..X..
+XOO..
+.....
+....X
+
+Player O under AI control plays: row:1, column:1
+
+i		Evaluation time: 0.5009909s
+ii	Heuristic evaluations: 1421781
+iii	Evaluations by depth: {1: 5, 2: 2, 3: 7, 4: 55, 5: 288, 6: 8853}
+iv	Average evaluation depth: 5.95
+..OX.
+.OX..
+XOO..
+.....
+....X
+
+Player X under AI control plays: row:0, column:0
+
+i		Evaluation time: 0.4053814s
+ii	Heuristic evaluations: 382084
+iii	Evaluations by depth: {1: 1, 2: 17, 3: 19, 4: 300, 5: 876, 6: 32492}
+iv	Average evaluation depth: 5.95
+X.OX.
+.OX..
+XOO..
+.....
+....X
+
+Player O under AI control plays: row:1, column:3
+
+i		Evaluation time: 0.5005927s
+ii	Heuristic evaluations: 1689241
+iii	Evaluations by depth: {1: 2, 2: 4, 3: 22, 4: 122, 5: 789, 6: 12391}
+iv	Average evaluation depth: 5.92
+X.OX.
+.OXO.
+XOO..
+.....
+....X
+
+Player X under AI control plays: row:0, column:1
+
+i		Evaluation time: 0.0799134s
+ii	Heuristic evaluations: 477866
+iii	Evaluations by depth: {1: 1, 2: 15, 3: 29, 4: 232, 5: 546, 6: 6700}
+iv	Average evaluation depth: 5.85
+XXOX.
+.OXO.
+XOO..
+.....
+....X
+
+Player O under AI control plays: row:2, column:3
+
+i		Evaluation time: 0.1808031s
+ii	Heuristic evaluations: 1722163
+iii	Evaluations by depth: {1: 1, 2: 4, 3: 35, 4: 135, 5: 709, 6: 5799}
+iv	Average evaluation depth: 5.83
+XXOX.
+.OXO.
+XOOO.
+.....
+....X
+
+Player X under AI control plays: row:2, column:4
+
+i		Evaluation time: 0.0318024s
+ii	Heuristic evaluations: 510850
+iii	Evaluations by depth: {1: 1, 2: 14, 3: 18, 4: 158, 5: 176, 6: 2292}
+iv	Average evaluation depth: 5.77
+XXOX.
+.OXO.
+XOOOX
+.....
+....X
+
+Player O under AI control plays: row:1, column:0
+
+i		Evaluation time: 0.1532581s
+ii	Heuristic evaluations: 1728113
+iii	Evaluations by depth: {1: 1, 2: 2, 3: 17, 4: 55, 5: 324, 6: 3438}
+iv	Average evaluation depth: 5.87
+XXOX.
+OOXO.
+XOOOX
+.....
+....X
+
+Player X under AI control plays: row:3, column:1
+
+i		Evaluation time: 0.0446296s
+ii	Heuristic evaluations: 525646
+iii	Evaluations by depth: {1: 1, 2: 11, 3: 23, 4: 138, 5: 230, 6: 1764}
+iv	Average evaluation depth: 5.71
+XXOX.
+OOXO.
+XOOOX
+.X...
+....X
+
+Player O under AI control plays: row:4, column:3
+
+i		Evaluation time: 0.4941449s
+ii	Heuristic evaluations: 1731683
+iii	Evaluations by depth: {1: 1, 2: 10, 3: 62, 4: 313, 5: 1920, 6: 23879}
+iv	Average evaluation depth: 5.89
+XXOX.
+OOXO.
+XOOOX
+.X...
+...OX
+
+Player X under AI control plays: row:3, column:2
+
+i		Evaluation time: 0.0034335s
+ii	Heuristic evaluations: 595510
+iii	Evaluations by depth: {1: 1, 2: 10, 3: 18, 4: 99, 5: 151, 6: 538}
+iv	Average evaluation depth: 5.45
+XXOX.
+OOXO.
+XOOOX
+.XX..
+...OX
+
+Player O under AI control plays: row:3, column:3
+
+i		Evaluation time: 0.0020053s
+ii	Heuristic evaluations: 1732115
+iii	Evaluations by depth: {1: 2, 2: 3, 3: 15, 4: 28, 5: 20, 6: 166}
+iv	Average evaluation depth: 5.39
+XXOX.
+OOXO.
+XOOOX
+.XXO.
+...OX
+
+The winner is O.
+
+6(b)i	Average evaluation time: 0.33s
+6(b)ii	Total heuristic evaluations: 240405
+6(b)iii	Evaluations by depth: {1: 120, 2: 144, 3: 337, 4: 2242, 5: 8555, 6: 229007}
+6(b)iv	Average evaluation depth: 5.85
+6(b)vi Total moves: 171

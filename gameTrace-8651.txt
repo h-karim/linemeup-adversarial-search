@@ -1,0 +1,787 @@
+n=8 b=6 s=5 t=1
+blocs=[(0, 0), (1, 1), (2, 2), (3, 3), (4, 4), (5, 5), (6, 6), (7, 7)]
+
+Player 1: AI d=6 a=True, e1
+Player 2: AI d=6 a=True, e2
+
+*.......
+.*......
+..*.....
+...*....
+....*...
+.....*..
+......*.
+.......*
+
+Player X under AI control plays: row:0, column:2
+
+i		Evaluation time: 0.5445998s
+ii	Heuristic evaluations: 5834
+iii	Evaluations by depth: {1: 56, 2: 55, 3: 54, 4: 39, 5: 15, 6: 9873}
+iv	Average evaluation depth: 5.93
+*.X.....
+.*......
+..*.....
+...*....
+....*...
+.....*..
+......*.
+.......*
+
+Player O under AI control plays: row:3, column:4
+
+i		Evaluation time: 0.5430346s
+ii	Heuristic evaluations: 482262
+iii	Evaluations by depth: {1: 55, 2: 54, 3: 53, 4: 42, 5: 11, 6: 1540}
+iv	Average evaluation depth: 5.58
+*.X.....
+.*......
+..*.....
+...*O...
+....*...
+.....*..
+......*.
+.......*
+
+Player X under AI control plays: row:1, column:0
+
+i		Evaluation time: 0.5489068s
+ii	Heuristic evaluations: 87086
+iii	Evaluations by depth: {1: 54, 2: 8, 3: 47, 4: 6, 5: 62, 6: 10382}
+iv	Average evaluation depth: 5.95
+*.X.....
+X*......
+..*.....
+...*O...
+....*...
+.....*..
+......*.
+.......*
+
+Player O under AI control plays: row:1, column:3
+
+i		Evaluation time: 0.5486653s
+ii	Heuristic evaluations: 943718
+iii	Evaluations by depth: {1: 8, 2: 52, 3: 13, 4: 40, 5: 14, 6: 1662}
+iv	Average evaluation depth: 5.79
+*.X.....
+X*.O....
+..*.....
+...*O...
+....*...
+.....*..
+......*.
+.......*
+
+Player X under AI control plays: row:2, column:3
+
+i		Evaluation time: 0.5309901s
+ii	Heuristic evaluations: 166782
+iii	Evaluations by depth: {1: 52, 2: 2, 3: 32, 4: 22, 5: 36, 6: 12157}
+iv	Average evaluation depth: 5.96
+*.X.....
+X*.O....
+..*X....
+...*O...
+....*...
+.....*..
+......*.
+.......*
+
+Player O under AI control plays: row:2, column:4
+
+i		Evaluation time: 0.5436139s
+ii	Heuristic evaluations: 1439834
+iii	Evaluations by depth: {1: 14, 2: 50, 3: 19, 4: 43, 5: 6, 6: 1734}
+iv	Average evaluation depth: 5.78
+*.X.....
+X*.O....
+..*XO...
+...*O...
+....*...
+.....*..
+......*.
+.......*
+
+Player X under AI control plays: row:0, column:4
+
+i		Evaluation time: 0.5296893s
+ii	Heuristic evaluations: 247956
+iii	Evaluations by depth: {1: 50, 2: 2, 3: 30, 4: 20, 5: 49, 6: 12327}
+iv	Average evaluation depth: 5.96
+*.X.X...
+X*.O....
+..*XO...
+...*O...
+....*...
+.....*..
+......*.
+.......*
+
+Player O under AI control plays: row:0, column:3
+
+i		Evaluation time: 0.5267818s
+ii	Heuristic evaluations: 1920242
+iii	Evaluations by depth: {1: 2, 2: 29, 3: 4, 4: 35, 5: 12, 6: 1760}
+iv	Average evaluation depth: 5.88
+*.XOX...
+X*.O....
+..*XO...
+...*O...
+....*...
+.....*..
+......*.
+.......*
+
+Player X under AI control plays: row:5, column:1
+
+i		Evaluation time: 0.5190556s
+ii	Heuristic evaluations: 325233
+iii	Evaluations by depth: {1: 29, 2: 2, 3: 30, 4: 18, 5: 44, 6: 12526}
+iv	Average evaluation depth: 5.97
+*.XOX...
+X*.O....
+..*XO...
+...*O...
+....*...
+.X...*..
+......*.
+.......*
+
+Player O under AI control plays: row:1, column:4
+
+i		Evaluation time: 0.5068786s
+ii	Heuristic evaluations: 2383322
+iii	Evaluations by depth: {1: 6, 2: 2, 3: 3, 4: 24, 5: 20, 6: 2408}
+iv	Average evaluation depth: 5.95
+*.XOX...
+X*.OO...
+..*XO...
+...*O...
+....*...
+.X...*..
+......*.
+.......*
+
+Player X under AI control plays: row:0, column:5
+
+i		Evaluation time: 0.5021818s
+ii	Heuristic evaluations: 396855
+iii	Evaluations by depth: {1: 2, 2: 2, 3: 4, 4: 27, 5: 45, 6: 12795}
+iv	Average evaluation depth: 5.99
+*.XOXX..
+X*.OO...
+..*XO...
+...*O...
+....*...
+.X...*..
+......*.
+.......*
+
+Player O under AI control plays: row:0, column:6
+
+i		Evaluation time: 0.5024602s
+ii	Heuristic evaluations: 2835744
+iii	Evaluations by depth: {1: 2, 2: 2, 3: 2, 4: 22, 5: 24, 6: 2634}
+iv	Average evaluation depth: 5.97
+*.XOXXO.
+X*.OO...
+..*XO...
+...*O...
+....*...
+.X...*..
+......*.
+.......*
+
+Player X under AI control plays: row:0, column:7
+
+i		Evaluation time: 0.5018134s
+ii	Heuristic evaluations: 466369
+iii	Evaluations by depth: {1: 2, 2: 2, 3: 2, 4: 15, 5: 57, 6: 12967}
+iv	Average evaluation depth: 5.99
+*.XOXXOX
+X*.OO...
+..*XO...
+...*O...
+....*...
+.X...*..
+......*.
+.......*
+
+Player O under AI control plays: row:1, column:2
+
+i		Evaluation time: 0.5029614s
+ii	Heuristic evaluations: 3276938
+iii	Evaluations by depth: {1: 2, 2: 2, 3: 2, 4: 18, 5: 19, 6: 2573}
+iv	Average evaluation depth: 5.97
+*.XOXXOX
+X*OOO...
+..*XO...
+...*O...
+....*...
+.X...*..
+......*.
+.......*
+
+Player X under AI control plays: row:1, column:6
+
+i		Evaluation time: 0.5017838s
+ii	Heuristic evaluations: 537088
+iii	Evaluations by depth: {1: 2, 2: 3, 3: 3, 4: 100, 5: 65, 6: 13383}
+iv	Average evaluation depth: 5.98
+*.XOXXOX
+X*OOO.X.
+..*XO...
+...*O...
+....*...
+.X...*..
+......*.
+.......*
+
+Player O under AI control plays: row:1, column:5
+
+i		Evaluation time: 0.5089784s
+ii	Heuristic evaluations: 3707238
+iii	Evaluations by depth: {1: 2, 2: 2, 3: 2, 4: 19, 5: 24, 6: 2840}
+iv	Average evaluation depth: 5.97
+*.XOXXOX
+X*OOOOX.
+..*XO...
+...*O...
+....*...
+.X...*..
+......*.
+.......*
+
+Player X under AI control plays: row:2, column:0
+
+i		Evaluation time: 0.5024049s
+ii	Heuristic evaluations: 607940
+iii	Evaluations by depth: {1: 2, 2: 3, 3: 3, 4: 63, 5: 94, 6: 15258}
+iv	Average evaluation depth: 5.98
+*.XOXXOX
+X*OOOOX.
+X.*XO...
+...*O...
+....*...
+.X...*..
+......*.
+.......*
+
+Player O under AI control plays: row:2, column:1
+
+i		Evaluation time: 0.5009017s
+ii	Heuristic evaluations: 4115592
+iii	Evaluations by depth: {1: 2, 2: 3, 3: 3, 4: 49, 5: 51, 6: 3796}
+iv	Average evaluation depth: 5.95
+*.XOXXOX
+X*OOOOX.
+XO*XO...
+...*O...
+....*...
+.X...*..
+......*.
+.......*
+
+Player X under AI control plays: row:2, column:7
+
+i		Evaluation time: 0.5025594s
+ii	Heuristic evaluations: 677322
+iii	Evaluations by depth: {1: 3, 2: 4, 3: 4, 4: 93, 5: 136, 6: 16149}
+iv	Average evaluation depth: 5.98
+*.XOXXOX
+X*OOOOX.
+XO*XO..X
+...*O...
+....*...
+.X...*..
+......*.
+.......*
+
+Player O under AI control plays: row:1, column:7
+
+i		Evaluation time: 0.5011113s
+ii	Heuristic evaluations: 4506334
+iii	Evaluations by depth: {1: 2, 2: 2, 3: 2, 4: 26, 5: 40, 6: 3272}
+iv	Average evaluation depth: 5.97
+*.XOXXOX
+X*OOOOXO
+XO*XO..X
+...*O...
+....*...
+.X...*..
+......*.
+.......*
+
+Player X under AI control plays: row:3, column:0
+
+i		Evaluation time: 0.5013893s
+ii	Heuristic evaluations: 746408
+iii	Evaluations by depth: {1: 3, 2: 3, 3: 3, 4: 59, 5: 164, 6: 15956}
+iv	Average evaluation depth: 5.98
+*.XOXXOX
+X*OOOOXO
+XO*XO..X
+X..*O...
+....*...
+.X...*..
+......*.
+.......*
+
+Player O under AI control plays: row:2, column:6
+
+i		Evaluation time: 0.5050197s
+ii	Heuristic evaluations: 4892174
+iii	Evaluations by depth: {1: 2, 2: 3, 3: 2, 4: 58, 5: 61, 6: 3646}
+iv	Average evaluation depth: 5.95
+*.XOXXOX
+X*OOOOXO
+XO*XO.OX
+X..*O...
+....*...
+.X...*..
+......*.
+.......*
+
+Player X under AI control plays: row:3, column:6
+
+i		Evaluation time: 0.5009022s
+ii	Heuristic evaluations: 816116
+iii	Evaluations by depth: {1: 2, 2: 6, 3: 6, 4: 147, 5: 404, 6: 18844}
+iv	Average evaluation depth: 5.96
+*.XOXXOX
+X*OOOOXO
+XO*XO.OX
+X..*O.X.
+....*...
+.X...*..
+......*.
+.......*
+
+Player O under AI control plays: row:3, column:2
+
+i		Evaluation time: 0.5008402s
+ii	Heuristic evaluations: 5246134
+iii	Evaluations by depth: {1: 2, 2: 4, 3: 4, 4: 81, 5: 81, 6: 4822}
+iv	Average evaluation depth: 5.94
+*.XOXXOX
+X*OOOOXO
+XO*XO.OX
+X.O*O.X.
+....*...
+.X...*..
+......*.
+.......*
+
+Player X under AI control plays: row:4, column:1
+
+i		Evaluation time: 0.5009284s
+ii	Heuristic evaluations: 883898
+iii	Evaluations by depth: {1: 2, 2: 7, 3: 8, 4: 182, 5: 444, 6: 19530}
+iv	Average evaluation depth: 5.96
+*.XOXXOX
+X*OOOOXO
+XO*XO.OX
+X.O*O.X.
+.X..*...
+.X...*..
+......*.
+.......*
+
+Player O under AI control plays: row:3, column:5
+
+i		Evaluation time: 0.5006278s
+ii	Heuristic evaluations: 5581598
+iii	Evaluations by depth: {1: 2, 2: 4, 3: 4, 4: 87, 5: 87, 6: 4970}
+iv	Average evaluation depth: 5.94
+*.XOXXOX
+X*OOOOXO
+XO*XO.OX
+X.O*OOX.
+.X..*...
+.X...*..
+......*.
+.......*
+
+Player X under AI control plays: row:4, column:6
+
+i		Evaluation time: 0.5009696s
+ii	Heuristic evaluations: 950310
+iii	Evaluations by depth: {1: 2, 2: 9, 3: 27, 4: 284, 5: 1493, 6: 23396}
+iv	Average evaluation depth: 5.91
+*.XOXXOX
+X*OOOOXO
+XO*XO.OX
+X.O*OOX.
+.X..*.X.
+.X...*..
+......*.
+.......*
+
+Player O under AI control plays: row:4, column:0
+
+i		Evaluation time: 0.5007248s
+ii	Heuristic evaluations: 5873744
+iii	Evaluations by depth: {1: 2, 2: 5, 3: 5, 4: 106, 5: 106, 6: 5470}
+iv	Average evaluation depth: 5.94
+*.XOXXOX
+X*OOOOXO
+XO*XO.OX
+X.O*OOX.
+OX..*.X.
+.X...*..
+......*.
+.......*
+
+Player X under AI control plays: row:4, column:7
+
+i		Evaluation time: 0.5008564s
+ii	Heuristic evaluations: 1016194
+iii	Evaluations by depth: {1: 2, 2: 8, 3: 9, 4: 204, 5: 395, 6: 20643}
+iv	Average evaluation depth: 5.96
+*.XOXXOX
+X*OOOOXO
+XO*XO.OX
+X.O*OOX.
+OX..*.XX
+.X...*..
+......*.
+.......*
+
+Player O under AI control plays: row:4, column:3
+
+i		Evaluation time: 0.5006814s
+ii	Heuristic evaluations: 6186514
+iii	Evaluations by depth: {1: 2, 2: 6, 3: 6, 4: 113, 5: 113, 6: 5778}
+iv	Average evaluation depth: 5.94
+*.XOXXOX
+X*OOOOXO
+XO*XO.OX
+X.O*OOX.
+OX.O*.XX
+.X...*..
+......*.
+.......*
+
+Player X under AI control plays: row:6, column:7
+
+i		Evaluation time: 0.5007286s
+ii	Heuristic evaluations: 1083658
+iii	Evaluations by depth: {1: 2, 2: 19, 3: 19, 4: 432, 5: 724, 6: 23729}
+iv	Average evaluation depth: 5.93
+*.XOXXOX
+X*OOOOXO
+XO*XO.OX
+X.O*OOX.
+OX.O*.XX
+.X...*..
+......*X
+.......*
+
+Player O under AI control plays: row:3, column:1
+
+i		Evaluation time: 0.5026143s
+ii	Heuristic evaluations: 6429986
+iii	Evaluations by depth: {1: 2, 2: 3, 3: 3, 4: 39, 5: 72, 6: 4404}
+iv	Average evaluation depth: 5.96
+*.XOXXOX
+X*OOOOXO
+XO*XO.OX
+XOO*OOX.
+OX.O*.XX
+.X...*..
+......*X
+.......*
+
+Player X under AI control plays: row:7, column:2
+
+i		Evaluation time: 0.5004926s
+ii	Heuristic evaluations: 1151613
+iii	Evaluations by depth: {1: 2, 2: 20, 3: 42, 4: 473, 5: 1865, 6: 28349}
+iv	Average evaluation depth: 5.90
+*.XOXXOX
+X*OOOOXO
+XO*XO.OX
+XOO*OOX.
+OX.O*.XX
+.X...*..
+......*X
+..X....*
+
+Player O under AI control plays: row:3, column:7
+
+i		Evaluation time: 0.5017662s
+ii	Heuristic evaluations: 6687884
+iii	Evaluations by depth: {1: 2, 2: 3, 3: 3, 4: 29, 5: 95, 6: 4880}
+iv	Average evaluation depth: 5.96
+*.XOXXOX
+X*OOOOXO
+XO*XO.OX
+XOO*OOXO
+OX.O*.XX
+.X...*..
+......*X
+..X....*
+
+Player X under AI control plays: row:2, column:5
+
+i		Evaluation time: 0.291157s
+ii	Heuristic evaluations: 1218837
+iii	Evaluations by depth: {1: 1, 2: 22, 3: 22, 4: 440, 5: 564, 6: 17356}
+iv	Average evaluation depth: 5.91
+*.XOXXOX
+X*OOOOXO
+XO*XOXOX
+XOO*OOXO
+OX.O*.XX
+.X...*..
+......*X
+..X....*
+
+Player O under AI control plays: row:5, column:0
+
+i		Evaluation time: 0.5011351s
+ii	Heuristic evaluations: 6827330
+iii	Evaluations by depth: {1: 2, 2: 4, 3: 4, 4: 46, 5: 120, 6: 5458}
+iv	Average evaluation depth: 5.96
+*.XOXXOX
+X*OOOOXO
+XO*XOXOX
+XOO*OOXO
+OX.O*.XX
+OX...*..
+......*X
+..X....*
+
+Player X under AI control plays: row:5, column:2
+
+i		Evaluation time: 0.2146134s
+ii	Heuristic evaluations: 1285147
+iii	Evaluations by depth: {1: 1, 2: 20, 3: 20, 4: 360, 5: 470, 6: 13122}
+iv	Average evaluation depth: 5.90
+*.XOXXOX
+X*OOOOXO
+XO*XOXOX
+XOO*OOXO
+OX.O*.XX
+OXX..*..
+......*X
+..X....*
+
+Player O under AI control plays: row:5, column:6
+
+i		Evaluation time: 0.5023656s
+ii	Heuristic evaluations: 6921806
+iii	Evaluations by depth: {1: 2, 2: 16, 3: 5, 4: 76, 5: 195, 6: 6529}
+iv	Average evaluation depth: 5.94
+*.XOXXOX
+X*OOOOXO
+XO*XOXOX
+XOO*OOXO
+OX.O*.XX
+OXX..*O.
+......*X
+..X....*
+
+Player X under AI control plays: row:6, column:4
+
+i		Evaluation time: 0.5004959s
+ii	Heuristic evaluations: 1351158
+iii	Evaluations by depth: {1: 2, 2: 11, 3: 23, 4: 239, 5: 2431, 6: 32669}
+iv	Average evaluation depth: 5.91
+*.XOXXOX
+X*OOOOXO
+XO*XOXOX
+XOO*OOXO
+OX.O*.XX
+OXX..*O.
+....X.*X
+..X....*
+
+Player O under AI control plays: row:5, column:7
+
+i		Evaluation time: 0.5022178s
+ii	Heuristic evaluations: 7134926
+iii	Evaluations by depth: {1: 2, 2: 13, 3: 8, 4: 82, 5: 344, 6: 7581}
+iv	Average evaluation depth: 5.93
+*.XOXXOX
+X*OOOOXO
+XO*XOXOX
+XOO*OOXO
+OX.O*.XX
+OXX..*OO
+....X.*X
+..X....*
+
+Player X under AI control plays: row:6, column:5
+
+i		Evaluation time: 0.5003817s
+ii	Heuristic evaluations: 1415769
+iii	Evaluations by depth: {1: 2, 2: 10, 3: 32, 4: 296, 5: 2614, 6: 32911}
+iv	Average evaluation depth: 5.91
+*.XOXXOX
+X*OOOOXO
+XO*XOXOX
+XOO*OOXO
+OX.O*.XX
+OXX..*OO
+....XX*X
+..X....*
+
+Player O under AI control plays: row:0, column:1
+
+i		Evaluation time: 0.1710684s
+ii	Heuristic evaluations: 7330742
+iii	Evaluations by depth: {1: 1, 2: 15, 3: 15, 4: 195, 5: 195, 6: 4290}
+iv	Average evaluation depth: 5.85
+*OXOXXOX
+X*OOOOXO
+XO*XOXOX
+XOO*OOXO
+OX.O*.XX
+OXX..*OO
+....XX*X
+..X....*
+
+Player X under AI control plays: row:6, column:3
+
+i		Evaluation time: 0.3307788s
+ii	Heuristic evaluations: 1435074
+iii	Evaluations by depth: {1: 1, 2: 14, 3: 56, 4: 375, 5: 2579, 6: 23375}
+iv	Average evaluation depth: 5.87
+*OXOXXOX
+X*OOOOXO
+XO*XOXOX
+XOO*OOXO
+OX.O*.XX
+OXX..*OO
+...XXX*X
+..X....*
+
+Player O under AI control plays: row:4, column:2
+
+i		Evaluation time: 0.0948441s
+ii	Heuristic evaluations: 7441246
+iii	Evaluations by depth: {1: 1, 2: 13, 3: 13, 4: 143, 5: 143, 6: 2664}
+iv	Average evaluation depth: 5.82
+*OXOXXOX
+X*OOOOXO
+XO*XOXOX
+XOO*OOXO
+OXOO*.XX
+OXX..*OO
+...XXX*X
+..X....*
+
+Player X under AI control plays: row:6, column:1
+
+i		Evaluation time: 0.1604512s
+ii	Heuristic evaluations: 1444671
+iii	Evaluations by depth: {1: 1, 2: 5, 3: 59, 4: 178, 5: 1929, 6: 11789}
+iv	Average evaluation depth: 5.82
+*OXOXXOX
+X*OOOOXO
+XO*XOXOX
+XOO*OOXO
+OXOO*.XX
+OXX..*OO
+.X.XXX*X
+..X....*
+
+Player O under AI control plays: row:6, column:0
+
+i		Evaluation time: 0.0401878s
+ii	Heuristic evaluations: 7483792
+iii	Evaluations by depth: {1: 1, 2: 11, 3: 11, 4: 99, 5: 99, 6: 1410}
+iv	Average evaluation depth: 5.77
+*OXOXXOX
+X*OOOOXO
+XO*XOXOX
+XOO*OOXO
+OXOO*.XX
+OXX..*OO
+OX.XXX*X
+..X....*
+
+Player X under AI control plays: row:4, column:5
+
+i		Evaluation time: 0.0081475s
+ii	Heuristic evaluations: 1447716
+iii	Evaluations by depth: {1: 1, 2: 1, 3: 11, 4: 14, 5: 126, 6: 477}
+iv	Average evaluation depth: 5.69
+*OXOXXOX
+X*OOOOXO
+XO*XOXOX
+XOO*OOXO
+OXOO*XXX
+OXX..*OO
+OX.XXX*X
+..X....*
+
+Player O under AI control plays: row:5, column:3
+
+i		Evaluation time: 0.006547s
+ii	Heuristic evaluations: 7485132
+iii	Evaluations by depth: {1: 1, 2: 9, 3: 9, 4: 81, 5: 45, 6: 456}
+iv	Average evaluation depth: 5.54
+*OXOXXOX
+X*OOOOXO
+XO*XOXOX
+XOO*OOXO
+OXOO*XXX
+OXXO.*OO
+OX.XXX*X
+..X....*
+
+Player X under AI control plays: row:5, column:4
+
+i		Evaluation time: 0.0042887s
+ii	Heuristic evaluations: 1448031
+iii	Evaluations by depth: {1: 1, 2: 1, 3: 14, 4: 3, 5: 15, 6: 48}
+iv	Average evaluation depth: 5.12
+*OXOXXOX
+X*OOOOXO
+XO*XOXOX
+XOO*OOXO
+OXOO*XXX
+OXXOX*OO
+OX.XXX*X
+..X....*
+
+Player O under AI control plays: row:6, column:2
+
+i		Evaluation time: 0.0008068s
+ii	Heuristic evaluations: 7485192
+iii	Evaluations by depth: {1: 1, 2: 13, 3: 1, 4: 5, 5: 5, 6: 30}
+iv	Average evaluation depth: 4.64
+*OXOXXOX
+X*OOOOXO
+XO*XOXOX
+XOO*OOXO
+OXOO*XXX
+OXXOX*OO
+OXOXXX*X
+..X....*
+
+Player X under AI control plays: row:7, column:4
+
+i		Evaluation time: 0.0050607s
+ii	Heuristic evaluations: 1448040
+iii	Evaluations by depth: {1: 2, 2: 3, 3: 17, 4: 20, 5: 36, 6: 84}
+iv	Average evaluation depth: 5.08
+*OXOXXOX
+X*OOOOXO
+XO*XOXOX
+XOO*OOXO
+OXOO*XXX
+OXXOX*OO
+OXOXXX*X
+..X.X..*
+
+The winner is X.
+
+6(b)i	Average evaluation time: 0.42s
+6(b)ii	Total heuristic evaluations: 522941
+6(b)iii	Evaluations by depth: {1: 399, 2: 562, 3: 773, 4: 5667, 5: 18838, 6: 496702}
+6(b)iv	Average evaluation depth: 5.85
+6(b)vi Total moves: 1326

@@ -1,0 +1,95 @@
+n=4 b=4 s=3 t=1
+blocs=[(1, 0), (2, 2)]
+
+Player 1: AI d=6 a=True, e1
+Player 2: AI d=6 a=True, e2
+
+....
+*...
+..*.
+....
+
+Player X under AI control plays: row:2, column:1
+
+i		Evaluation time: 0.4602492s
+ii	Heuristic evaluations: 0
+iii	Evaluations by depth: {1: 1, 2: 9, 3: 80, 4: 387, 5: 3063, 6: 24478}
+iv	Average evaluation depth: 5.85
+....
+*...
+.X*.
+....
+
+Player O under AI control plays: row:0, column:0
+
+i		Evaluation time: 0.3018284s
+ii	Heuristic evaluations: 134296
+iii	Evaluations by depth: {1: 1, 2: 13, 3: 34, 4: 284, 5: 853, 6: 11647}
+iv	Average evaluation depth: 5.88
+O...
+*...
+.X*.
+....
+
+Player X under AI control plays: row:0, column:1
+
+i		Evaluation time: 0.0008934s
+ii	Heuristic evaluations: 42042
+iii	Evaluations by depth: {1: 1, 2: 1, 3: 11, 4: 11, 5: 196, 6: 16}
+iv	Average evaluation depth: 4.90
+OX..
+*...
+.X*.
+....
+
+Player O under AI control plays: row:0, column:2
+
+i		Evaluation time: 0.0034518s
+ii	Heuristic evaluations: 134380
+iii	Evaluations by depth: {1: 1, 2: 11, 3: 11, 4: 196, 5: 2, 6: 52}
+iv	Average evaluation depth: 4.26
+OXO.
+*...
+.X*.
+....
+
+Player X under AI control plays: row:0, column:3
+
+i		Evaluation time: 5.15e-05s
+ii	Heuristic evaluations: 42162
+iii	Evaluations by depth: {1: 1, 2: 1, 3: 18, 4: 0, 5: 0, 6: 0}
+iv	Average evaluation depth: 2.85
+OXOX
+*...
+.X*.
+....
+
+Player O under AI control plays: row:1, column:1
+
+i		Evaluation time: 4.17e-05s
+ii	Heuristic evaluations: 134380
+iii	Evaluations by depth: {1: 1, 2: 18, 3: 0, 4: 0, 5: 0, 6: 0}
+iv	Average evaluation depth: 1.95
+OXOX
+*O..
+.X*.
+....
+
+Player X under AI control plays: row:1, column:2
+
+i		Evaluation time: 2.46e-05s
+ii	Heuristic evaluations: 42162
+iii	Evaluations by depth: {1: 2, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0}
+iv	Average evaluation depth: 1.00
+OXOX
+*OX.
+.X*.
+....
+
+The winner is X.
+
+6(b)i	Average evaluation time: 0.11s
+6(b)ii	Total heuristic evaluations: 41400
+6(b)iii	Evaluations by depth: {1: 8, 2: 53, 3: 154, 4: 878, 5: 4114, 6: 36193}
+6(b)iv	Average evaluation depth: 3.81
+6(b)vi Total moves: 28

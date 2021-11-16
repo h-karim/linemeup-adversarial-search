@@ -3,6 +3,7 @@
 import time
 import sys
 import math as m
+from collections import Counter
 
 
 class Game:
@@ -12,7 +13,7 @@ class Game:
   AI = 3
 
   def __init__(self,
-               recommend=True,
+               recommend=False,
                n=3,
                blocks=[],
                s=3,
@@ -20,11 +21,13 @@ class Game:
                depth2=0,
                e1=1,
                e2=2,
-               t=10):
+               t=10,
+               f=None):
     E = {1: self.e1, 2: self.e2}
     self.n = n
     self.initialize_game()
-    self.add_blocks(blocks)
+    if blocks:
+      self.add_blocks(blocks)
     self.s = s
     self.recommend = recommend
     self.depth1 = depth1
@@ -32,6 +35,15 @@ class Game:
     self.score1 = E[e1]
     self.score2 = E[e2]
     self.time_limit = t
+    self.f = f
+    self.moves = 0
+    self.e1_invocations = 0
+    self.e2_invocations = 0
+    self.invocations = 0
+    self.total_depth_evals = Counter(
+        {i: 0
+         for i in range(1,
+                        max(depth2, depth1) + 1)})
 
   def initialize_game(self):
 
@@ -44,9 +56,12 @@ class Game:
     print()
     for x in range(0, self.n):
       for y in range(0, self.n):
-        print(F'{self.current_state[x][y]}', end="")
+        print(F'{self.current_state[x][y]}', end='')
+        if self.f: self.f.write(F'{self.current_state[x][y]}')
       print()
+      if self.f: self.f.write('\n')
     print()
+    if self.f: self.f.write('\n')
 
   def is_valid(self, px, py):
     if px < 0 or px > self.n - 1 or py < 0 or py > self.n - 1:
@@ -113,7 +128,22 @@ class Game:
       elif self.result == 'O':
         print('The winner is O!')
       elif self.result == '.':
-        print("It's a tie!")
+        print('It\'s a tie!')
+      if self.f:
+        if self.result == ',':
+          self.f.write('It\'s a tie.\n')
+        else:
+          self.f.write(f'The winner is {self.result}.\n\n')
+        avg_time = sum(self.total_times) / len(self.total_times)
+        avg_ev_depth = sum(self.total_depths) / len(self.total_depths)
+
+        self.f.write(f'6(b)i\tAverage evaluation time: {avg_time:.2f}s\n')
+        self.f.write(
+            f'6(b)ii\tTotal heuristic evaluations: {self.total_evals}\n')
+        self.f.write(
+            f'6(b)iii\tEvaluations by depth: {dict(self.total_depth_evals)}\n')
+        self.f.write(f'6(b)iv\tAverage evaluation depth: {avg_ev_depth:.2f}\n')
+        self.f.write(f'6(b)vi Total moves: {self.total_moves}\n')
       self.initialize_game()
     return self.result
 
@@ -128,13 +158,14 @@ class Game:
         print('The move is not valid! Try again.')
 
   def switch_player(self):
+    self.moves += 1
     if self.player_turn == 'X':
       self.player_turn = 'O'
     elif self.player_turn == 'O':
       self.player_turn = 'X'
     return self.player_turn
 
-  def minimax(self, max=False, d=0, start=0, limit=10):
+  def minimax(self, max=False, d=0, start=0, limit=10, current=0):
     # Minimizing for 'X' and maximizing for 'O'
     # Possible values are:
     # -maxint - win for 'X'
@@ -149,19 +180,23 @@ class Game:
     y = None
     result = self.is_end()
     if result == 'X':
+      self.depth_evals[current] += 1
       return (-sys.maxsize + 1, x, y)
     elif result == 'O':
+      self.depth_evals[current] += 1
       return (sys.maxsize - 1, x, y)
     elif result == '.':
+      self.depth_evals[current] += 1
       return (0, x, y)
-    elif d <= 0 or t == (limit - 0.5):  #max depth reached or time
+    elif current == d or t >= (limit - 0.5):  #max depth reached or time
+
       for i in range(0, self.n):
         for j in range(0, self.n):
           if self.current_state[i][j] == '.':
             if max:
               self.current_state[i][j] = 'O'
               v = self.score1()
-              print('2: ', v)
+              # print('2: ', v)
               if v > value:
                 value = v
                 x = i
@@ -175,29 +210,46 @@ class Game:
                 x = i
                 y = j
             self.current_state[i][j] = '.'
+      self.depth_evals[current] += 1
       return (value, x, y)
-    d -= 1
+    current += 1
     for i in range(0, self.n):
       for j in range(0, self.n):
         if self.current_state[i][j] == '.':
           if max:
             self.current_state[i][j] = 'O'
-            (v, _, _) = self.minimax(max=False, d=d)
+            (v, _, _) = self.minimax(max=False,
+                                     d=d,
+                                     start=start,
+                                     limit=limit,
+                                     current=current)
             if v > value:
               value = v
               x = i
               y = j
           else:
             self.current_state[i][j] = 'X'
-            (v, _, _) = self.minimax(max=True, d=d)
+            (v, _, _) = self.minimax(max=True,
+                                     d=d,
+                                     start=start,
+                                     limit=limit,
+                                     current=current)
             if v < value:
               value = v
               x = i
               y = j
           self.current_state[i][j] = '.'
+    self.depth_evals[current] += 1
     return (value, x, y)
 
-  def alphabeta(self, alpha=-2, beta=2, max=False, d=0, start=0, limit=10):
+  def alphabeta(self,
+                alpha=-2,
+                beta=2,
+                max=False,
+                d=0,
+                start=0,
+                limit=10,
+                current=0):
     # Minimizing for 'X' and maximizing for 'O'
     # Possible values are:
     # -1 - win for 'X'
@@ -213,12 +265,15 @@ class Game:
     result = self.is_end()
     # print(start, t, limit)
     if result == 'X':
+      self.depth_evals[current] += 1
       return (-sys.maxsize + 1, x, y)
     elif result == 'O':
+      self.depth_evals[current] += 1
       return (sys.maxsize - 1, x, y)
     elif result == '.':
+      self.depth_evals[current] += 1
       return (0, x, y)
-    elif d <= 0 or t >= (limit - 0.5):  #max depth or time reached
+    elif current == d or t >= (limit - 0.5):  #max depth or time reached
       if t >= limit:
         print('time limit reached')
         if max: return (float('-inf'), x, y)
@@ -243,8 +298,9 @@ class Game:
                 x = i
                 y = j
             self.current_state[i][j] = '.'
+      self.depth_evals[current] += 1
       return (value, x, y)
-    d -= 1
+    current += 1
     for i in range(0, self.n):
       for j in range(0, self.n):
         if self.current_state[i][j] == '.':
@@ -255,7 +311,8 @@ class Game:
                                        max=False,
                                        d=d,
                                        start=start,
-                                       limit=limit)
+                                       limit=limit,
+                                       current=current)
             if v > value:
               value = v
               x = i
@@ -267,7 +324,8 @@ class Game:
                                        max=True,
                                        d=d,
                                        start=start,
-                                       limit=limit)
+                                       limit=limit,
+                                       current=current)
             if v < value:
               value = v
               x = i
@@ -275,19 +333,25 @@ class Game:
           self.current_state[i][j] = '.'
           if max:
             if value >= beta:
+              self.depth_evals[current] += 1
               return (value, x, y)
             if value > alpha:
               alpha = value
           else:
             if value <= alpha:
+              self.depth_evals[current] += 1
               return (value, x, y)
             if value < beta:
               beta = value
+    self.depth_evals[current] += 1
     return (value, x, y)
 
   def play(self, algo=None, player_x=None, player_o=None):
-    d1 = self.depth1
-    d2 = self.depth2
+    self.total_evals = 0
+    self.total_times = []
+    self.total_depths = []
+    self.total_moves = 0
+    moves = 0
     limit = self.time_limit
     if algo == None:
       algo = self.ALPHABETA
@@ -296,9 +360,21 @@ class Game:
     if player_o == None:
       player_o = self.HUMAN
     while True:
+      moves += 1
+      self.depth_evals = Counter(
+          {i: 0
+           for i in range(1,
+                          max(self.depth1, self.depth2) + 1)})
+      d1 = self.depth1
+      d2 = self.depth2
       self.draw_board()
-      if self.check_end():
-        return
+      r = self.check_end()
+      if r:
+        ans = (r, self.invocations, self.moves, self.total_depth_evals,
+               (time.time() - start),
+               (sum(self.total_depths) / len(self.total_depths)))
+        return ans
+
       start = time.time()
       if algo == self.MINIMAX:
         if self.player_turn == 'X':
@@ -314,9 +390,11 @@ class Game:
       if (self.player_turn == 'X'
           and player_x == self.HUMAN) or (self.player_turn == 'O'
                                           and player_o == self.HUMAN):
-        if self.recommend:
-          print(F'Evaluation time: {round(end - start, 7)}s')
-          print(F'Recommended move: x = {x}, y = {y}')
+        # if self.recommend:
+        #   print(F'Evaluation time: {round(end - start, 7)}s')
+        #   if self.f:
+        #     self.f.write(F'i\t\tEvaluation time: {round(end - start, 7)}s\n')
+        #   print(F'Recommended move: x = {x}, y = {y}')
         (x, y) = self.input_move()
       if (self.player_turn == 'X'
           and player_x == self.AI) or (self.player_turn == 'O'
@@ -325,10 +403,36 @@ class Game:
         print(
             F'Player {self.player_turn} under AI control plays: x = {x}, y = {y}'
         )
+        avg = sum(k * v for k, v in self.depth_evals.items()) / sum(
+            self.depth_evals.values())
+        if self.f:
+          self.f.write(
+              F'Player {self.player_turn} under AI control plays: row:{x}, column:{y}\n\n'
+          )
+          self.f.write(F'i\t\tEvaluation time: {round(end - start, 7)}s\n')
+          self.f.write(f'ii\tHeuristic evaluations: ')
+          if self.player_turn == 'X':
+            self.f.write(f'{self.e1_invocations}\n')
+          else:
+            self.f.write(f'{self.e2_invocations}\n')
+          self.f.write(
+              f'iii\tEvaluations by depth: {dict(self.depth_evals)}\n')
+
+          self.f.write(f'iv\tAverage evaluation depth: {avg:.2f}\n')
+      # self.e1_invocations = 0
+      # self.e2_invocations = 0
       self.current_state[x][y] = self.player_turn
       self.switch_player()
+      self.total_evals += sum(self.depth_evals.values())
+
+      self.total_times.append(round(end - start, 7))
+      self.total_depths.append(avg)
+      self.total_moves += moves
+      self.total_depth_evals += self.depth_evals
 
   def e1(self):
+    self.invocations += 1
+    self.e1_invocations += 1
     score = 0
     lines = []
     for i in range(0, self.n):
@@ -369,6 +473,8 @@ class Game:
     return score
 
   def e2(self):
+    self.invocations += 1
+    self.e2_invocations += 1
     score = 0
     center = self.n // 2
     for i in range(0, self.n):
@@ -389,15 +495,115 @@ class Game:
 
 
 def main():
-  GAMES = [{"n": 4, "b": 4, "s": 3, "t": 5}]
-  g = Game(recommend=True, n=4, depth1=7, depth2=0, s=4, t=5)
-  # g.play(algo=Game.MINIMAX, player_x=Game.AI, player_o=Game.AI)
-  g.play(
-      algo=Game.ALPHABETA,
-      player_x=Game.AI,
-      player_o=Game.HUMAN,
-  )
+  #yapf: disable
+  GAMES = [
+      {'n':4,'b':4, 's':3, 't':5,
+          'd1':6, 'd2':6, 'algo': False,'blocks': [(0, 0), (0, 3), (3, 0), (3, 3)]},
+      {'n':4,'b':4, 's':3, 't':1,
+          'd1':6, 'd2':6, 'algo': True,'blocks': [(1, 0), (2, 2)]},
+      {'n': 5, 'b':4 ,'s':4 , 't':1,
+          'd1':6, 'd2':6, 'algo':True, 'blocks':[]},
+      {'n':5, 'b':4,'s':4, 't':5,
+      'd1':6, 'd2':6, 'algo':True, 'blocks':[]},
+      {'n':8, 'b':5,'s':5, 't':1,
+      'd1':2, 'd2':6, 'algo':True, 'blocks':[]},
+      {'n':8, 'b':5,'s':5, 't':5,
+      'd1':2, 'd2':6, 'algo':True, 'blocks':[]},
+      {'n':8, 'b':6,'s':5, 't':1,
+      'd1':6, 'd2':6, 'algo':True, 'blocks':[]},
+      {'n':8, 'b':6,'s':5, 't':1,
+      'd1':6, 'd2':6, 'algo':True, 'blocks': [(0,0),(1,1),
+                                              (2,2),(3,3),
+                                              (4,4),(5,5),
+                                              (6,6),(7,7)]},
+  ]
+  # for game in GAMES:
+  #   n, b, s, t = (game["n"],game["b"], game["s"],game["t"] )
+  #   file = f'gameTrace-{n}{b}{s}{t}.txt'
+  #   with open(file, 'w') as f:
+  #     f.write(f'n={n} b={b} s={s} t={t}\n')
+  #     f.write(f'blocs={game["blocks"]}\n')
+  #     f.write(f'\nPlayer 1: AI d={game["d1"]} a={game["algo"]}, e1\n')
+  #     f.write(f'Player 2: AI d={game["d1"]} a={game["algo"]}, e2\n\n')
+
+  #     g = Game(recommend=False,
+  #            n=game['n'],
+  #            s=game['s'],
+  #            t=game['t'],
+  #            depth1=game['d1'],
+  #            depth2=game['d2'],
+  #            blocks=game['blocks'], f=f)
+  #     g.play(
+  #     algo=game['algo'],
+  #     player_x=Game.AI,
+  #     player_o=Game.AI,
+  #     )
+  r = 10
+  FILE = 'scoreboard.txt'
+  with open(FILE, 'w')as f:
+    for game in GAMES:
+
+      wins_e1 = 0
+      wins_e2 = 0
+      i = []
+      ii = 0
+      iii = Counter({})
+      iv = []
+      v = []
+      vi = []
+      f.write(f'n={game["n"]} b={len(game["blocks"])} s={game["s"]} t={game["t"]}\n')
+      f.write(f'\nPlayer 1: d={game["d1"]} a={game["algo"]}\n')
+      f.write(f'Player 2: d={game["d2"]} a={game["algo"]}\n')
+      f.write(f'\n10 games\n')
+      for j in range(0, r):
+        g = Game(recommend=False,
+              n=game['n'],
+              s=game['s'],
+              t=game['t'],
+              depth1=game['d1'],
+              depth2=game['d2'],
+              blocks=game['blocks'])
+        w, evals, moves, evals_depth, t, avg_ev_depth= g.play(
+        algo=game['algo'],
+        player_x=Game.AI,
+        player_o=Game.AI,
+        )
+        if w == 'X': wins_e1 +=1
+        elif w=='O': wins_e2 +=1
+        i.append(t/moves)
+        ii += evals
+        iii += evals_depth
+        iv.append(avg_ev_depth)
+        vi.append(moves)
+      for j in range(0,r):
+        g = Game(recommend=False,
+              n=game['n'],
+              s=game['s'],
+              t=game['t'],
+              depth1=game['d1'],
+              depth2=game['d2'],
+              blocks=game['blocks'], e1=2, e2=1)
+        w, evals, moves, evals_depth, t, avg_ev_depth= g.play(
+        algo=game['algo'],
+        player_x=Game.AI,
+        player_o=Game.AI,
+        )
+        if w == 'O': wins_e1 +=1
+        elif w == 'X': wins_e2 +=1
+        i.append(t/moves)
+        ii += evals
+        iii += evals_depth
+        iv.append(avg_ev_depth)
+        vi.append(moves)
+      total_wins = wins_e1+wins_e2
+      f.write(f'Total wins for heuristic e1: {wins_e1} ({wins_e1/total_wins*100:.1f}%)\n')
+      f.write(f'Total wins for heuristic e2: {wins_e2} ({wins_e2/total_wins*100:.1f}%)\n')
+      f.write(f'\ni\tAverage evaluation time: {sum(i)/len(i):.2f}\n')
+      f.write(f'ii\tTotal heuristic evaluations: {ii}\n')
+      f.write(f'iii\tEvaluations by depth: {dict(iii)}\n')
+      f.write(f'iv\t Average evaluation depth: {sum(iv)/len(iv):.2f}\n')
+      f.write(f'vi\tAverage moves per game: {sum(vi)/len(vi):.2f}\n\n')
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
   main()
